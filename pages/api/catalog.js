@@ -12,14 +12,15 @@ export default async (req, res) => {
         Cursor: req.query.cursor,
       },
     });
-    console.log(url);
     const response = await fetch(url);
 
     if (!response.ok) {
       throw new Error("Invalid");
     }
     const data = await response.json();
-    res.send({
+
+    res.setHeader("Cache-Control", "s-maxage=86400");
+    res.status(200).json({
       success: true,
       items: data.data,
       nextPage: data.nextPageCursor,
@@ -27,6 +28,6 @@ export default async (req, res) => {
     });
   } catch (e) {
     console.error(e.message);
-    res.send({ success: false });
+    res.status(500).json({ success: false });
   }
 };
