@@ -4,4 +4,4 @@ This is my goal to open source all projects I might not use but is useful to som
 
 You can host your own server, but I have a server for this project on Vercel if you would like to use it.
 
-catalog-api-git-main-imacodr.vercel.app
+catalog.imacodr.com
